@@ -7,9 +7,7 @@ const ChatHome = ({ user, updateUser }) => {
   return (
     <>
       <h1>{user.displayName}</h1>
-      <button onClick={handleLogout}>
-        <Link to="/">Logout</Link>
-      </button>
+      <button onClick={handleLogout}>LogOut</button>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -9,24 +10,12 @@ const firebaseConfig = {
   storageBucket: "react-chat-79b21.appspot.com",
   messagingSenderId: "968526672879",
   appId: "1:968526672879:web:5eedb7fa31a46a3a7dbc1a",
+  databaseURL: "https://react-chat-79b21-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const provider = new GoogleAuthProvider();
-
 const auth = getAuth();
+const database = getDatabase(app);
 
-// Handle Google Login
-
-const loginWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await signInWithPopup(auth, provider);
-    return result.user;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export { app, auth, loginWithGoogle };
+export { app, auth, database };
